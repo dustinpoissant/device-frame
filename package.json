@@ -18,6 +18,12 @@
   ],
   "author": "Dustin Poissant",
   "license": "MIT",
+  "devDependencies": {
+    "terser": "^5.31.0"
+  },
+  "scripts": {
+    "build": "terser DeviceFrame.js -o DeviceFrame.min.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/dustinpoissant/device-frame.git"
