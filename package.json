@@ -1,0 +1,29 @@
+{
+  "name": "device-frame",
+  "version": "1.0.0",
+  "description": "A customizable web component that renders an iframe inside a mobile device frame",
+  "main": "DeviceFrame.js",
+  "type": "module",
+  "files": [
+    "DeviceFrame.js",
+    "README.md"
+  ],
+  "keywords": [
+    "web-component",
+    "device-frame",
+    "mobile",
+    "iframe",
+    "responsive-design",
+    "device-emulation"
+  ],
+  "author": "Dustin Poissant",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dustinpoissant/device-frame.git"
+  },
+  "homepage": "https://dustinpoissant.github.io/device-frame/",
+  "bugs": {
+    "url": "https://github.com/dustinpoissant/device-frame/issues"
+  }
+}

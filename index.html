@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Device Frame Component Documentation</title>
+	<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+	<link rel="stylesheet" href="./kempo.min.css" />
+	<link rel="stylesheet" href="./kempo-hljs.min.css" />
+</head>
+<body>
+	<main class="container">
+		<h1 class="ta-center"><img src="./favicon.svg" class="mr" />Device Frame Web Component</h1>
+		
+		<p>A customizable web component that renders an iframe inside a mobile device frame, with options for device selection, orientation, folding, and scaling.</p>
+		
+		<h2 class="h2">Installation</h2>
+		<p>Include the component script and optionally a CSS framework for styling the controls.</p>
+		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"module"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"DeviceFrame.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+		
+		<h2 class="h2">Attributes</h2>
+		<div class="table-wrapper mb">
+			<table>
+				<thead>
+					<tr>
+						<th>Attribute</th>
+						<th>Description</th>
+						<th>Default</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><code>src</code></td>
+						<td>The URL to load in the iframe</td>
+						<td><code>false</code></td>
+					</tr>
+					<tr>
+						<td><code>device</code></td>
+						<td>Device type (e.g., iphone15promax, galaxys22ultra)</td>
+						<td><code>"iphone15"</code></td>
+					</tr>
+					<tr>
+						<td><code>controls</code></td>
+						<td>Comma-separated list of controls to show (device, orientation, fold, scaled)</td>
+						<td><code>""</code></td>
+					</tr>
+					<tr>
+						<td><code>orientation</code></td>
+						<td>Device orientation (portrait/landscape)</td>
+						<td><code>"portrait"</code></td>
+					</tr>
+					<tr>
+						<td><code>scaled</code></td>
+						<td>Scales device to fit 80% of viewport</td>
+						<td><code>false</code></td>
+					</tr>
+					<tr>
+						<td><code>devices</code></td>
+						<td>Comma-separated list of device keys to show in device picker (leave empty to show all)</td>
+						<td><code>""</code></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<h2 class="h2">Available Devices</h2>
+		<ul>
+			<li>iPhone 15 Pro Max</li>
+			<li>iPhone 15 Pro</li>
+			<li>iPhone 15</li>
+			<li>iPhone SE</li>
+			<li>Galaxy S22 Ultra</li>
+			<li>Galaxy S22+</li>
+			<li>Galaxy S22</li>
+			<li>Galaxy Tab S9</li>
+			<li>Galaxy Tab A8</li>
+			<li>Pixel 8</li>
+			<li>Pixel Fold</li>
+			<li>Galaxy Z Fold5</li>
+			<li>Pixel Tablet</li>
+			<li>iPad Pro 12.9"</li>
+			<li>iPad Pro 10.5"</li>
+			<li>iPad Air 4</li>
+			<li>iPad 10.2"</li>
+		</ul>
+		
+		<h2 class="h2">Examples</h2>
+		
+		<h3 class="h3">Basic Device Frame</h3>
+		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">device-frame</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://loremipsum.io/"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">device-frame</span>&gt;</span></code></pre>
+		<device-frame src="https://loremipsum.io/" class="mb"></device-frame>
+		
+		<h3 class="h3">With Device Picker</h3>
+		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">device-frame</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://loremipsum.io/"</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"device"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">device-frame</span>&gt;</span></code></pre>
+		<device-frame src="https://loremipsum.io/" controls="device" class="mb"></device-frame>
+		
+		<h3 class="h3">Limited Device Options</h3>
+		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">device-frame</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://loremipsum.io/"</span> <span class="hljs-attr">devices</span>=<span class="hljs-string">"iphone15,galaxys22ultra,ipadpro12"</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"device"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">device-frame</span>&gt;</span></code></pre>
+		<device-frame src="https://loremipsum.io/" devices="iphone15,galaxys22ultra,ipadpro12" controls="device" class="mb"></device-frame>
+		
+		<h3 class="h3">With Orientation Control</h3>
+		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">device-frame</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://loremipsum.io/"</span> <span class="hljs-attr">device</span>=<span class="hljs-string">"galaxys22ultra"</span> <span class="hljs-attr">orientation</span>=<span class="hljs-string">"portrait"</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"orientation"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">device-frame</span>&gt;</span></code></pre>
+		<device-frame src="https://loremipsum.io/" device="galaxys22ultra" orientation="portrait" controls="orientation" class="mb"></device-frame>
+		
+		<h3 class="h3">With All Controls</h3>
+		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">device-frame</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://loremipsum.io/"</span> <span class="hljs-attr">device</span>=<span class="hljs-string">"pixelfold"</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"device,orientation,fold,scaled"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">device-frame</span>&gt;</span></code></pre>
+		<device-frame src="https://loremipsum.io/" device="pixelfold" controls="device,orientation,fold,scaled" class="mb"></device-frame>
+		
+		<h2 class="h2">JavaScript API</h2>
+		<p>You can control the component programmatically in several ways:</p>
+		
+		<h3 class="h3">Creating Instances Programmatically</h3>
+		<p>You can create device frame elements dynamically in two ways:</p>
+		
+		<h4>Using the Constructor</h4>
+		<pre><code class="hljs javascript"><span class="hljs-keyword">import</span> DeviceFrame <span class="hljs-keyword">from</span> <span class="hljs-string">'./DeviceFrame.js'</span>;<br /><br /><span class="hljs-comment">// Create with constructor</span><br /><span class="hljs-keyword">const</span> frame = <span class="hljs-keyword">new</span> DeviceFrame({<br />  <span class="hljs-attr">src</span>: <span class="hljs-string">'https://example.com'</span>,<br />  <span class="hljs-attr">device</span>: <span class="hljs-string">'iphone15'</span>,<br />  <span class="hljs-attr">controls</span>: <span class="hljs-string">'device,orientation'</span><br />});<br /><span class="hljs-built_in">document</span>.body.appendChild(frame);</code></pre>
+		
+		<h4>Using document.createElement</h4>
+		<pre><code class="hljs javascript"><span class="hljs-comment">// Create a new device frame element</span><br /><span class="hljs-keyword">const</span> frame = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'device-frame'</span>);<br />frame.src = <span class="hljs-string">'https://example.com'</span>;<br />frame.device = <span class="hljs-string">'iphone15'</span>;<br />frame.controls = <span class="hljs-string">'device,orientation'</span>;<br /><br /><span class="hljs-comment">// Add it to the DOM</span><br /><span class="hljs-built_in">document</span>.body.appendChild(frame);</code></pre>
+		
+		<h3 class="h3">Controlling Existing Elements</h3>
+		<p>Control device frames that are already in the DOM:</p>
+		<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> frame = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'device-frame'</span>);<br /><br /><span class="hljs-comment">// Set properties</span><br />frame.src = <span class="hljs-string">'https://new-url.com'</span>;<br />frame.device = <span class="hljs-string">'galaxys22ultra'</span>;<br />frame.devices = <span class="hljs-string">'iphone15,galaxys22ultra,ipadpro12'</span>; <span class="hljs-comment">// Limit device options</span><br />frame.orientation = <span class="hljs-string">'landscape'</span>;<br />frame.controls = <span class="hljs-string">'device,orientation'</span>;<br /><br /><span class="hljs-comment">// Get current values</span><br /><span class="hljs-built_in">console</span>.log(frame.device); <span class="hljs-comment">// 'galaxys22ultra'</span><br /><span class="hljs-built_in">console</span>.log(frame.orientation); <span class="hljs-comment">// 'landscape'</span></code></pre>
+		
+		<h3 class="h3">Adding Custom Devices</h3>
+		<p>Extend the device library with custom devices:</p>
+		<pre><code class="hljs javascript"><span class="hljs-keyword">import</span> DeviceFrame <span class="hljs-keyword">from</span> <span class="hljs-string">'./DeviceFrame.js'</span>;<br /><br /><span class="hljs-comment">// Add a custom device</span><br />DeviceFrame.devices[<span class="hljs-string">'customphone'</span>] = {<br />  <span class="hljs-attr">name</span>: <span class="hljs-string">'Custom Phone'</span>,<br />  <span class="hljs-attr">resolution</span>: [<span class="hljs-number">400</span>, <span class="hljs-number">800</span>],<br />  <span class="hljs-attr">topFrameSize</span>: <span class="hljs-number">20</span>,<br />  <span class="hljs-attr">bottomFrameSize</span>: <span class="hljs-number">20</span>,<br />  <span class="hljs-attr">sideFrameSize</span>: <span class="hljs-number">15</span>,<br />  <span class="hljs-attr">innerRadius</span>: <span class="hljs-number">10</span>,<br />  <span class="hljs-attr">outerRadius</span>: <span class="hljs-number">15</span><br />};<br /><br /><span class="hljs-comment">// Now 'customphone' will appear in device pickers</span></code></pre>
+		
+		<h3 class="h3">Event Handling</h3>
+		<p>Listen for component changes:</p>
+		<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> frame = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'device-frame'</span>);<br /><br />frame.addEventListener(<span class="hljs-string">'devicechange'</span>, (event) =&gt; {<br />  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Device changed to:'</span>, event.detail.device);<br />  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Previous device:'</span>, event.detail.previousDevice);<br />});<br /><br />frame.addEventListener(<span class="hljs-string">'orientationchange'</span>, (event) =&gt; {<br />  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Orientation changed to:'</span>, event.detail.orientation);<br />});<br /><br />frame.addEventListener(<span class="hljs-string">'controlschange'</span>, (event) =&gt; {<br />  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Controls changed to:'</span>, event.detail.controls);<br />});<br /><br />frame.addEventListener(<span class="hljs-string">'scalechange'</span>, (event) =&gt; {<br />  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Scaled changed to:'</span>, event.detail.scaled);<br />});<br /><br />frame.addEventListener(<span class="hljs-string">'deviceschange'</span>, (event) =&gt; {<br />  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Device list changed to:'</span>, event.detail.devices);<br />});<br /><br />frame.addEventListener(<span class="hljs-string">'load'</span>, (event) =&gt; {<br />  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Iframe loaded:'</span>, event.detail.src);<br />  <span class="hljs-comment">// Access the iframe directly</span><br />  <span class="hljs-keyword">const</span> iframe = event.detail.iframe;<br />  <span class="hljs-comment">// Or use the getter</span><br />  <span class="hljs-keyword">const</span> iframe2 = frame.iframe;<br />});</code></pre>
+		
+		<h3 class="h3">Iframe Access</h3>
+		<p>Get direct access to the iframe element for advanced use cases:</p>
+		<pre><code class="hljs javascript"><span class="hljs-keyword">const</span> frame = <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'device-frame'</span>);<br /><span class="hljs-keyword">const</span> iframe = frame.iframe;<br /><br /><span class="hljs-comment">// Post messages to the iframe</span><br />iframe.contentWindow.postMessage(<span class="hljs-string">'Hello from parent!'</span>, <span class="hljs-string">'*'</span>);<br /><br /><span class="hljs-comment">// Listen for messages from the iframe</span><br /><span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'message'</span>, (event) =&gt; {<br />  <span class="hljs-keyword">if</span> (event.source === iframe.contentWindow) {<br />    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Message from iframe:'</span>, event.data);<br />  }<br />});</code></pre>
+		
+		<h2 class="h2">Styling</h2>
+		<p>The select controls inherit styles from the page. Use CSS custom properties to customize spacing:</p>
+
+		<h3 class="h3">Inline Styles</h3>
+		<p>For a single component, use inline styles:</p>
+		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">device-frame</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://example.com"</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"device"</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"--spacer: 2rem;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">device-frame</span>&gt;</span></code></pre>
+
+		<h3 class="h3">CSS Targeting</h3>
+		<p>Use the CSS Custom Property <code>--spacer</code> to adjust the space between the controls and the device frame.</p>
+		<p>Target all device-frame components:</p>
+		<pre><code class="hljs css"><span class="hljs-selector-tag">device-frame</span> {<br />  <span class="hljs-attribute">--spacer</span>: <span class="hljs-number">2rem</span>;<br />}</code></pre>
+		<p>Or target a specific instance:</p>
+		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">device-frame</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://example.com"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"my-device-frame"</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"device"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">device-frame</span>&gt;</span></code></pre>
+		<pre><code class="hljs css"><span class="hljs-selector-class">.my-device-frame</span> {<br />  <span class="hljs-attribute">--spacer</span>: <span class="hljs-number">2rem</span>;<br />}</code></pre>
+		
+		
+	</main>
+	<div style="height:33vh"></div>
+	<script type="module" src="DeviceFrame.js"></script>
+</body>
+</html>
