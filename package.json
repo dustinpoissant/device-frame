@@ -1,6 +1,6 @@
 {
   "name": "@dustinpoissant/device-frame",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A customizable web component that renders an iframe inside a mobile device frame",
   "main": "DeviceFrame.js",
   "type": "module",
