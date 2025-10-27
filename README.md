@@ -6,10 +6,28 @@ A customizable web component that renders an iframe inside a mobile device frame
 
 ## Installation
 
-Include the component script and optionally a CSS framework for styling the controls.
+You can install the Device Frame component via NPM or download it manually.
+
+#### NPM Installation
+
+Install the package using NPM:
+
+```bash
+npm install @dustinpoissant/device-frame
+```
+
+Then include the minified script in your HTML:
 
 ```html
-<script type="module" src="DeviceFrame.js"></script>
+<script type="module" src="node_modules/@dustinpoissant/device-frame/DeviceFrame.min.js"></script>
+```
+
+#### Manual Download
+
+Download `DeviceFrame.min.js` directly from the [repository](https://github.com/dustinpoissant/device-frame) and include it in your project:
+
+```html
+<script type="module" src="DeviceFrame.min.js"></script>
 ```
 
 ## Attributes

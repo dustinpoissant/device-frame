@@ -1,21 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" theme="auto">
 <head>
 	<meta charset="UTF-8">
 	<title>Device Frame Component Documentation</title>
 	<link rel="icon" type="image/svg+xml" href="favicon.svg" />
 	<link rel="stylesheet" href="./kempo.min.css" />
 	<link rel="stylesheet" href="./kempo-hljs.min.css" />
+	<style>
+		#theme {
+			width: 10rem;
+			position: fixed;
+			top: 8px;
+			right: 8px;
+		}
+	</style>
 </head>
 <body>
 	<main class="container">
+		<select id="theme">
+			<option value="auto">System Theme</option>
+			<option value="dark">Dark Theme</option>
+			<option value="light">Light Theme</option>
+		</select>
+		<script>
+			const $theme = document.getElementById('theme');
+			console.log($theme);
+			const savedTheme = localStorage.getItem('theme'); 
+			if(savedTheme){
+				$theme.value = savedTheme;
+				document.documentElement.setAttribute('theme', savedTheme);
+			}
+			$theme.addEventListener('change', ({target: { value }}) => {
+				localStorage.setItem('theme', value);
+				document.documentElement.setAttribute('theme', value);
+			});
+		</script>
+		
 		<h1 class="ta-center"><img src="./favicon.svg" class="mr" />Device Frame Web Component</h1>
 		
 		<p>A customizable web component that renders an iframe inside a mobile device frame, with options for device selection, orientation, folding, and scaling.</p>
 		
 		<h2 class="h2">Installation</h2>
-		<p>Include the component script and optionally a CSS framework for styling the controls.</p>
-		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"module"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"DeviceFrame.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+		<p>You can install the Device Frame component via NPM or download it manually.</p>
+		
+		<h3>NPM Installation</h3>
+		<p>Install the package using NPM:</p>
+		<pre><code class="hljs bash">npm install @dustinpoissant/device-frame</code></pre>
+		<p>Then include the minified script in your HTML:</p>
+		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"module"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"node_modules/@dustinpoissant/device-frame/DeviceFrame.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+		
+		<h3>Manual Download</h3>
+		<p>Download <code>DeviceFrame.min.js</code> directly from the <a href="https://github.com/dustinpoissant/device-frame">repository</a> and include it in your project:</p>
+		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"module"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"DeviceFrame.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 		
 		<h2 class="h2">Attributes</h2>
 		<div class="table-wrapper mb">
@@ -86,24 +122,24 @@
 		<h2 class="h2">Examples</h2>
 		
 		<h3 class="h3">Basic Device Frame</h3>
-		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">device-frame</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://loremipsum.io/"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">device-frame</span>&gt;</span></code></pre>
-		<device-frame src="https://loremipsum.io/" class="mb"></device-frame>
+		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">device-frame</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://websiteipsum.com/index.html"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">device-frame</span>&gt;</span></code></pre>
+		<device-frame src="https://websiteipsum.com/index.html" class="mb"></device-frame>
 		
 		<h3 class="h3">With Device Picker</h3>
-		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">device-frame</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://loremipsum.io/"</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"device"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">device-frame</span>&gt;</span></code></pre>
-		<device-frame src="https://loremipsum.io/" controls="device" class="mb"></device-frame>
+		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">device-frame</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://websiteipsum.com/index.html"</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"device"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">device-frame</span>&gt;</span></code></pre>
+		<device-frame src="https://websiteipsum.com/index.html" controls="device" class="mb"></device-frame>
 		
 		<h3 class="h3">Limited Device Options</h3>
-		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">device-frame</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://loremipsum.io/"</span> <span class="hljs-attr">devices</span>=<span class="hljs-string">"iphone15,galaxys22ultra,ipadpro12"</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"device"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">device-frame</span>&gt;</span></code></pre>
-		<device-frame src="https://loremipsum.io/" devices="iphone15,galaxys22ultra,ipadpro12" controls="device" class="mb"></device-frame>
+		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">device-frame</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://websiteipsum.com/index.html"</span> <span class="hljs-attr">devices</span>=<span class="hljs-string">"iphone15,galaxys22ultra,ipadpro12"</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"device"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">device-frame</span>&gt;</span></code></pre>
+		<device-frame src="https://websiteipsum.com/index.html" devices="iphone15,galaxys22ultra,ipadpro12" controls="device" class="mb"></device-frame>
 		
 		<h3 class="h3">With Orientation Control</h3>
-		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">device-frame</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://loremipsum.io/"</span> <span class="hljs-attr">device</span>=<span class="hljs-string">"galaxys22ultra"</span> <span class="hljs-attr">orientation</span>=<span class="hljs-string">"portrait"</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"orientation"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">device-frame</span>&gt;</span></code></pre>
-		<device-frame src="https://loremipsum.io/" device="galaxys22ultra" orientation="portrait" controls="orientation" class="mb"></device-frame>
+		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">device-frame</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://websiteipsum.com/index.html"</span> <span class="hljs-attr">device</span>=<span class="hljs-string">"galaxys22ultra"</span> <span class="hljs-attr">orientation</span>=<span class="hljs-string">"portrait"</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"orientation"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">device-frame</span>&gt;</span></code></pre>
+		<device-frame src="https://websiteipsum.com/index.html" device="galaxys22ultra" orientation="portrait" controls="orientation" class="mb"></device-frame>
 		
 		<h3 class="h3">With All Controls</h3>
-		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">device-frame</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://loremipsum.io/"</span> <span class="hljs-attr">device</span>=<span class="hljs-string">"pixelfold"</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"device,orientation,fold,scaled"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">device-frame</span>&gt;</span></code></pre>
-		<device-frame src="https://loremipsum.io/" device="pixelfold" controls="device,orientation,fold,scaled" class="mb"></device-frame>
+		<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">device-frame</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://websiteipsum.com/index.html"</span> <span class="hljs-attr">device</span>=<span class="hljs-string">"pixelfold"</span> <span class="hljs-attr">controls</span>=<span class="hljs-string">"device,orientation,fold,scaled"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">device-frame</span>&gt;</span></code></pre>
+		<device-frame src="https://websiteipsum.com/index.html" device="pixelfold" controls="device,orientation,fold,scaled" class="mb"></device-frame>
 		
 		<h2 class="h2">JavaScript API</h2>
 		<p>You can control the component programmatically in several ways:</p>
@@ -151,6 +187,6 @@
 		
 	</main>
 	<div style="height:33vh"></div>
-	<script type="module" src="DeviceFrame.js"></script>
+	<script type="module" src="DeviceFrame.min.js"></script>
 </body>
 </html>
